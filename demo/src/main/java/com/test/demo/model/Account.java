@@ -4,6 +4,7 @@ public class Account {
     private String name;
     private String gender;
     private String birthdate;
+    private String password;
 
     public String getName() {
         return name;
@@ -27,5 +28,13 @@ public class Account {
 
     public void setBirthdate(String birthdate) {
         this.birthdate = birthdate;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }

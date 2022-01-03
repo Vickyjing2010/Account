@@ -3,17 +3,16 @@ package com.test.demo.service;
 import com.test.demo.dao.AccountDao;
 import com.test.demo.dao.AccountEntity;
 import com.test.demo.model.Account;
+import org.junit.Assert;
+import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.mockito.ArgumentMatchers;
 import org.mockito.InjectMocks;
-import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.junit.runner.RunWith;
-import org.junit.Assert;
-import org.junit.Test;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = {AccountService.class})
@@ -30,8 +29,8 @@ public class AccountServiceTest {
     public void testCreateAccount() {
         AccountEntity mockAccount = mockAccountEntity();
         Mockito.when(accountDao.createAccount(ArgumentMatchers.any())).thenReturn(mockAccount);
-        boolean result = accountService.createAccount(mockAccount());
-        Assert.assertTrue(result);
+        String result = accountService.createAccount(mockAccount());
+        Assert.assertNotNull(result);
     }
 
     @Test
@@ -50,6 +49,7 @@ public class AccountServiceTest {
         AccountEntity account = new AccountEntity();
         account.setName("accountNameTest");
         account.setGender("male");
+        account.setPassword("23445");
         return account;
     }
 
@@ -57,6 +57,7 @@ public class AccountServiceTest {
         Account account = new Account();
         account.setName("accountNameTest");
         account.setGender("male");
+        account.setPassword("23445");
         return account;
     }
 

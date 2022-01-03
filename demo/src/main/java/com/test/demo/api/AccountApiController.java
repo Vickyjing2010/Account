@@ -20,14 +20,13 @@ public class AccountApiController implements AccountApi{
 
     public ResponseEntity<String> createAccount(Account account) {
         try {
-            accountService.createAccount(account);
-            return new ResponseEntity<>("success", HttpStatus.OK);
+            String jwtToken = accountService.createAccount(account);
+            return new ResponseEntity<>(jwtToken, HttpStatus.OK);
         } catch (Exception e) {
             log.error(e.getMessage(), e);
             return new ResponseEntity<>("failed", HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
-
 
     public ResponseEntity<List<Account>> getAccountList() {
         try {
